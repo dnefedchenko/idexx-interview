@@ -1,0 +1,48 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+/target/
+/.idea/
+/osmd.iml
+
+backend/src/main/resources/db
+InterviewTask.iml
+backend/target
+backend/src/main/resources/static
+frontend/target
+
+frontend/.DS_Store
+frontend/src/main/ui/node
+frontend/src/main/ui/node_modules
+frontend/src/main/ui/dist
+frontend/src/main/ui/.idea
+
+# local env files
+frontend/.env.local
+frontend/.env.*.local
+
+# Log files
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+
