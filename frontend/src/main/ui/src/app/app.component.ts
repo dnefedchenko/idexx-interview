@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MediaService} from "./services/media.service";
+import {MediaService, VolumeItem} from "./services/media.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -7,16 +8,34 @@ import {MediaService} from "./services/media.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private mediaService: MediaService) {
+  books: VolumeItem[];
+  mediaForm: FormGroup;
+  pageLoadingCompleted: boolean =  false;
 
+  constructor(private mediaService: MediaService, private formBuilder: FormBuilder) {
+    this.books = [];
   }
 
   ngOnInit(): void {
+    this.initMediaForm();
+  }
+
+  private initMediaForm() {
+    this.mediaForm = this.formBuilder.group({
+      searchTerm: ''
+    });
+  }
+
+  search(): void {
+    const searchTerm = this.mediaForm.get('searchTerm').value;
     this.mediaService
-      .getMedia('queryTerm')
+      .getMedia(searchTerm)
       .then(books => {
-        let response = books;
-        console.log(response);
+        this.books = books;
+        this.pageLoadingCompleted = true;
+      }, error => {
+        console.log(error);
+        this.pageLoadingCompleted = false;
       });
   }
 }

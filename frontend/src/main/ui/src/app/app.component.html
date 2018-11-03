@@ -1,8 +1,27 @@
 <div class="ui-g">
   <div class="ui-g-2 ui-md-offset-5">
-    <div class="ui-inputgroup">
-      <button pButton type="button" label="Search"></button>
-      <input type="text" pInputText placeholder="keyword">
-    </div>
+    <form class="ui-inputgroup" [formGroup]="mediaForm">
+        <button pButton type="button" label="Search" (click)="search()"></button>
+        <input type="text" pInputText placeholder="keyword" formControlName="searchTerm">
+    </form>
+  </div>
+
+  <div class="ui-g-8 ui-md-offset-2" *ngIf="pageLoadingCompleted">
+    <p-table [value]="books">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Authors</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-book>
+        <tr>
+          <td>{{book.id}}</td>
+          <td>{{book.volumeInfo.title}}</td>
+          <td>{{book.volumeInfo.authors}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
