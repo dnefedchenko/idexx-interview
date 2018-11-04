@@ -19,6 +19,7 @@ export class MediaService {
 export interface VolumeItem {
   id: string;
   volumeInfo: VolumeInfo;
+  type: string;
 }
 
 export interface VolumeInfo {

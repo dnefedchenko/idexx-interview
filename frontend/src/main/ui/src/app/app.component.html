@@ -10,16 +10,16 @@
     <p-table [value]="books">
       <ng-template pTemplate="header">
         <tr>
-          <th>Id</th>
           <th>Title</th>
           <th>Authors</th>
+          <th>Type</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-book>
         <tr>
-          <td>{{book.id}}</td>
           <td>{{book.volumeInfo.title}}</td>
           <td>{{book.volumeInfo.authors}}</td>
+          <td>{{book.type}}</td>
         </tr>
       </ng-template>
     </p-table>

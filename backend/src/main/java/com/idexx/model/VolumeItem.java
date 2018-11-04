@@ -5,6 +5,11 @@ import java.io.Serializable;
 public class VolumeItem implements Serializable {
     private String id;
     private VolumeInfo volumeInfo;
+    private String type;
+
+    public VolumeItem() {
+        this.type = EntityType.Book.name();
+    }
 
     public String getId() {
         return id;
@@ -22,11 +27,20 @@ public class VolumeItem implements Serializable {
         this.volumeInfo = volumeInfo;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(EntityType type) {
+        this.type = type.name();
+    }
+
     @Override
     public String toString() {
         return "VolumeItem{" +
                 "id='" + id + '\'' +
                 ", volumeInfo=" + volumeInfo +
+                ", type=" + type +
                 '}';
     }
 }
