@@ -4,3 +4,7 @@ album:
   url: "https://itunes.apple.com/search"
 upstream:
   results-limit: 5
+management:
+  endpoint:
+    health:
+      show-details: always
