@@ -31,7 +31,7 @@ public class AlbumService {
     public List<AlbumTrack> getAlbums(String term, String countryCode) {
         StringBuilder builder = new StringBuilder(ALBUMS_URL);
         if (!StringUtils.isEmpty(term)) {
-            builder.append("?q=").append(term);
+            builder.append("?term=").append(term);
         }
         if (!StringUtils.isEmpty(countryCode)) {
             builder.append("&country=").append(countryCode);

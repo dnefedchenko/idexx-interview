@@ -22,7 +22,7 @@ public class AlbumsController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<AlbumTrack> getAlbums(@RequestParam(name = "term") String term,
-                                      @RequestParam(name = "country") String country) {
+                                      @RequestParam(name = "country", defaultValue = "UA") String country) {
         return this.albumService.getAlbums(term, country);
     }
 }
