@@ -1,0 +1,6 @@
+volume:
+  url: "https://www.googleapis.com/books/v1/volumes"
+album:
+  url: "https://itunes.apple.com/search"
+upstream:
+  results-limit: 5

@@ -3,16 +3,22 @@ package com.idexx.service;
 import com.google.gson.Gson;
 import com.idexx.model.AlbumSearchResult;
 import com.idexx.model.AlbumTrack;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AlbumService {
-    private static String ALBUMS_URL = "https://itunes.apple.com/search?term=jack&country=UA";
+    @Value("${album.url}")
+    private String ALBUMS_URL;
+
+    @Value("${upstream.results-limit}")
+    private String limit;
 
     private RestTemplate restTemplate;
     private Gson gson;
@@ -33,6 +39,6 @@ public class AlbumService {
 
         ResponseEntity<String> response = restTemplate.getForEntity(builder.toString(), String.class);
         AlbumSearchResult albumSearchResult = gson.fromJson(response.getBody(), AlbumSearchResult.class);
-        return albumSearchResult.getResults();
+        return albumSearchResult.getResults().stream().limit(Integer.valueOf(limit)).collect(Collectors.toList());
     }
 }
